@@ -7,17 +7,20 @@ DHT dht(DHTPIN, DHTTYPE);
 
 void setup()
 {
-  Serial.begin(9600); // Initialisation de la liaison série
   dht.begin(); 
+  Serial.begin(9600); // Initialisation de la liaison série
+  Serial.flush(); // vidé le buffer USB
+  
 }
 
 void loop()
 {
   delay(2000);
   
-  int h = dht.readHumidity();
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
                                            
-  Serial.println(h); // l'envoi de la donnée 
+  Serial.println(h + "," + t); // l'envoi de la donnée 
   
   Serial.flush(); // vidé le buffer USB
 }
