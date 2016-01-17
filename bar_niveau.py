@@ -26,14 +26,14 @@ from time import sleep
 from random import randrange
 
 class Mod_niveau(Tkinter.Canvas):
-    def __init__(self, parent, titre = "Niveau"):
+    def __init__(self, parent, titre = "Niveau", height=600, width=160):
         global valeur, root, bar, grad, text, H, W, coord1, coord2
 
         self.titre = titre
         root = parent
         valeur = 0.
-        H=600
-        W=160
+        H=height
+        W=width
         coord1 = 30, 20, (W-70), (H-50) 
         coord2 = 30, (H-51), (W-70), (H-50)
 
@@ -64,7 +64,7 @@ class Mod_niveau(Tkinter.Canvas):
                 self.delete(grad)
                 self.delete(text)
 
-                bar = self.create_rectangle(W-130, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B",outline="#FF8B8B")
+                bar = self.create_rectangle(30, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B",outline="#FF8B8B")
                 grad = self.create_line(W-70,(H-30)-(valeur+20), W-60, (H-30)-(valeur+20), fill = "#FF8B8B")
                 text = self.create_text(W-40,(H-30)-(valeur+20), text=int(txt_consigne), font="Arial 20 italic", fill="#FF8B8B")
 
@@ -81,7 +81,7 @@ class Mod_niveau(Tkinter.Canvas):
                 self.delete(grad)
                 self.delete(text)
 
-                bar = self.create_rectangle(W-130, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B", outline="#FF8B8B")
+                bar = self.create_rectangle(30, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B", outline="#FF8B8B")
                 grad = self.create_line(W-70,(H-30)-(valeur+20), W-60, (H-30)-(valeur+20), fill = "#FF8B8B")
                 text = self.create_text(W-40,(H-30)-(valeur+20), text=int(txt_consigne), font="Arial 20 italic", fill="#FF8B8B")
 
@@ -96,7 +96,7 @@ class Mod_niveau(Tkinter.Canvas):
                 self.delete(grad)                
                 self.delete(text)
 
-                bar = self.create_rectangle(W-130, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B", outline="#FF8B8B")
+                bar = self.create_rectangle(30, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B", outline="#FF8B8B")
                 grad = self.create_line(W-70,(H-30)-(valeur+20), W-60, (H-30)-(valeur+20), fill = "#FF8B8B")
                 text = self.create_text(W-40, (H-30)-(valeur+20), text=int(txt_consigne), font="Arial 20 italic", fill="#FF8B8B")
                 parent.update()
@@ -108,7 +108,7 @@ def val():
 
 if __name__=="__main__":
     app=Tkinter.Tk()
-    barre=Mod_niveau(app)
+    barre=Mod_niveau(app, titre = "Niveau", height=700, width=200 )
     barre.pack()
     val()
     
