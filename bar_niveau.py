@@ -1,9 +1,9 @@
 # -*- coding: cp1252 -*-
 
 """
-Gauge développé pour la librairie Tkinter
+Barre de niveau développé pour la librairie Tkinter
 Ecrit par Areour mohamed Cherif
-Date : 10/01/2016
+Date : 16/01/2016
 E-mail : openhardwaredz@gmail.com
 
 This program is free software: you can redistribute it and/or modify
