@@ -1,9 +1,9 @@
 # -*- coding: cp1252 -*-
 
 """
-Barre de niveau développé pour la librairie Tkinter
+Barre de niveau developper pour la librairie Tkinter
 Ecrit par Areour mohamed Cherif
-Date : 16/01/2016
+Date : 17/01/2016
 E-mail : openhardwaredz@gmail.com
 
 This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import Tkinter
-import time
+from time import sleep
 from random import randrange
 
 class Mod_niveau(Tkinter.Canvas):
@@ -32,10 +32,10 @@ class Mod_niveau(Tkinter.Canvas):
         self.titre = titre
         root = parent
         valeur = 0.
-        H=500
+        H=600
         W=160
-        coord1 = (W-130), (H-480), (W-70), (H-50) 
-        coord2 = (W-130), (H-51), (W-70), (H-50)
+        coord1 = 30, 20, (W-70), (H-50) 
+        coord2 = 30, (H-51), (W-70), (H-50)
 
         Tkinter.Canvas.__init__(self, bg="red", height=H, width=W)
 
@@ -43,65 +43,73 @@ class Mod_niveau(Tkinter.Canvas):
         self.create_rectangle(coord1, outline="#FF8B8B")
 
         bar = self.create_rectangle(coord2, fill="#FF8B8B",outline="#FF8B8B")
-	grad = self.create_line(W-70,H-51, W-60, H-51, fill = "#FF8B8B") 
+        grad = self.create_line(W-70,H-51, W-60, H-51, fill = "#FF8B8B") 
         text = self.create_text(W-40, H-50, text=int(valeur), font="Arial 20 italic", fill="#FF8B8B")
-        legende = self.create_text((W/2),(H-25) , text= self.titre, font="Arial 20 ", fill="#FF8B8B")
+        legende = self.create_text((W/2),(H-25) , text= self.titre, font="Arial 20 italic", fill="#FF8B8B")
         
         parent.update()
 
     def SetValue(self, consigne):
-        global valeur, root, bar, text, grad
+        global valeur, root, bar, text, grad, H, W 
         parent = root
+        bar_consigne = consigne*(H-70)/100 # valeur de la consigne
+        
+        while (int(valeur) != bar_consigne):
 
-        while (int(valeur) != int(consigne)):
-
-            if (int(valeur) < int(consigne*3.6)):
+            if (int(valeur) < bar_consigne):
                 valeur = valeur + 1
-                txt_consigne = valeur/3.6
-                self.delete(arc)
-                self.delete(text)
-                arc = self.create_arc(coord2, start=90, extent=-valeur, fill="#FF8B8B")
-                self.create_rectangle(coord2, outline="#FF8B8B")
-                self.create_rectangle(coord1, fill="#FF2E2E", outline="#FF8B8B")
-                self.create_rectangle(coord1, outline="#FF8B8B")
-                text = self.create_text(130, 130, text=int(txt_consigne), font="Arial 40 italic", fill="#FF8B8B")
-                parent.update()
-                #time.sleep(0.00002)    #Définie l'inertie de la gauge
+                txt_consigne = int((valeur*100)/(H-70))
 
-            elif( int(valeur) > int(consigne*3.6)):
+                self.delete(bar)
+                self.delete(grad)
+                self.delete(text)
+
+                bar = self.create_rectangle(W-130, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B",outline="#FF8B8B")
+                grad = self.create_line(W-70,(H-30)-(valeur+20), W-60, (H-30)-(valeur+20), fill = "#FF8B8B")
+                text = self.create_text(W-40,(H-30)-(valeur+20), text=int(txt_consigne), font="Arial 20 italic", fill="#FF8B8B")
+
+                parent.update()
+                sleep(0.02)
+                
+
+            elif(int(valeur) > bar_consigne):
+
                 valeur = valeur - 1
-                txt_consigne = valeur/3.6
-                self.delete(arc)
+                txt_consigne = int((valeur*100)/(H-70))
+
+                self.delete(bar)
+                self.delete(grad)
                 self.delete(text)
 
-                arc = self.create_arc(coord2, start=90, extent=-valeur, fill="#FF8B8B")
-                self.create_rectangle(coord2, outline="#FF8B8B")
-                self.create_rectangle(coord1, fill="#FF2E2E", outline="#FF8B8B")
-                self.create_rectangle(coord1, outline="#FF8B8B")
-                text = self.create_text(130, 130, text=int(txt_consigne), font="Arial 40 italic", fill="#FF8B8B")
+                bar = self.create_rectangle(W-130, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B", outline="#FF8B8B")
+                grad = self.create_line(W-70,(H-30)-(valeur+20), W-60, (H-30)-(valeur+20), fill = "#FF8B8B")
+                text = self.create_text(W-40,(H-30)-(valeur+20), text=int(txt_consigne), font="Arial 20 italic", fill="#FF8B8B")
+
                 parent.update()
-                #time.sleep(0.00002)    #Définie l'inertie de la gauge
+                sleep(0.02)
+                
                 
             else :
-                txt_consigne = valeur/3.6
-                self.delete(arc)
+                txt_consigne = int((valeur*100)/(H-70))
+
+                self.delete(bar)
+                self.delete(grad)                
                 self.delete(text)
-                arc = self.create_arc(coord2, start=90, extent=-valeur, fill="#FF8B8B")
-                self.create_rectangle(coord2, outline="#FF8B8B")
-                self.create_rectangle(coord1, fill="#FF2E2E", outline="#FF8B8B")
-                self.create_rectangle(coord1, outline="#FF8B8B")
-                text = self.create_text(130, 130, text=int(txt_consigne), font="Arial 40 italic", fill="#FF8B8B")
+
+                bar = self.create_rectangle(W-130, ((H-30)-(valeur+20)), W-70,H-50, fill="#FF8B8B", outline="#FF8B8B")
+                grad = self.create_line(W-70,(H-30)-(valeur+20), W-60, (H-30)-(valeur+20), fill = "#FF8B8B")
+                text = self.create_text(W-40, (H-30)-(valeur+20), text=int(txt_consigne), font="Arial 20 italic", fill="#FF8B8B")
                 parent.update()
-                #time.sleep(0.00002)    #Définie l'inertie de la gauge
+                sleep(0.02)
 
 def val():
     for i in range(1,10):
-        gauge.SetValue(randrange(100))
-"""
+        barre.SetValue(100) #randrange(100)
+
 if __name__=="__main__":
     app=Tkinter.Tk()
-    gauge=Mod_niveau(app)
-    gauge.pack()
-    #val()
+    barre=Mod_niveau(app)
+    barre.pack()
+    val()
     
     app.mainloop()
