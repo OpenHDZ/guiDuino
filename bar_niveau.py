@@ -39,7 +39,7 @@ class Mod_niveau(Tkinter.Canvas):
 
         Tkinter.Canvas.__init__(self, bg="red", height=H, width=W)
 
-        # Dessin de la gauge
+        # Dessin de la barre 
         self.create_rectangle(coord1, outline="#FF8B8B")
 
         bar = self.create_rectangle(coord2, fill="#FF8B8B",outline="#FF8B8B")
@@ -104,11 +104,11 @@ class Mod_niveau(Tkinter.Canvas):
 
 def val():
     for i in range(1,10):
-        barre.SetValue(100) #randrange(100)
+        barre.SetValue(randrange(100))
 
 if __name__=="__main__":
     app=Tkinter.Tk()
-    barre=Mod_niveau(app, titre = "Niveau", height=700, width=200 )
+    barre=Mod_niveau(app, titre = "moh", height=800, width=160 )
     barre.pack()
     val()
     
