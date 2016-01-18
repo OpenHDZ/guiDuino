@@ -3,7 +3,7 @@
 """
 Barre de niveau developper pour la librairie Tkinter
 Ecrit par Areour mohamed Cherif
-Date : 17/01/2016
+Date : 18/01/2016
 E-mail : openhardwaredz@gmail.com
 
 This program is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@ import Tkinter
 from time import sleep
 from random import randrange
 
-class Mod_niveau(Tkinter.Canvas):
+class Mod_prog(Tkinter.Canvas):
     def __init__(self, parent, titre = "Niveau", height=160, width=600):
         global valeur, root, bar, grad, text, H, W, coord1, coord2
 
@@ -109,7 +109,7 @@ def val():
 
 if __name__=="__main__":
     app=Tkinter.Tk()
-    barre=Mod_niveau(app, titre = "Progression",height=160, width=800)
+    barre=Mod_prog(app, titre = "Progression",height=160, width=800)
     barre.pack()
     val()
     
