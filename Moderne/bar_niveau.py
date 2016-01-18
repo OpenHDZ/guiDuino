@@ -1,4 +1,4 @@
-# -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 
 """
 Barre de niveau developper pour la librairie Tkinter
@@ -108,7 +108,7 @@ def val():
 
 if __name__=="__main__":
     app=Tkinter.Tk()
-    barre=Mod_niveau(app, titre = "moh", height=800, width=160 )
+    barre=Mod_niveau(app, titre = "niveau", height=800, width=160 )
     barre.pack()
     val()
     

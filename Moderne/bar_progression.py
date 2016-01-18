@@ -1,4 +1,4 @@
-# -*- coding: cp1252 -*-
+# -*- coding: utf-8 -*-
 
 """
 Barre de niveau developper pour la librairie Tkinter
@@ -44,7 +44,7 @@ class Mod_prog(Tkinter.Canvas):
 
         bar = self.create_rectangle(coord2, fill="#FF8B8B",outline="#FF8B8B")
         grad = self.create_line(31,35, 31, 40, fill = "#FF8B8B") 
-        text = self.create_text(31, 20, text=int(valeur), font="Arial 20 italic", fill="#FF8B8B")
+        text = self.create_text(31, 20, text=int(valeur-30), font="Arial 20 italic", fill="#FF8B8B")
         legende = self.create_text((W/2),(H-25) , text= self.titre, font="Arial 20 italic", fill="#FF8B8B")
         
         parent.update()
